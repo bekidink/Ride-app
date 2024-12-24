@@ -1,45 +1,51 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Person } from "@/assets/icons/person";
+import color from "@/themes/app.colors";
+import { Car, CarPrimary, Category, Home, HomeLight } from "@/utils/icons";
+import { Tabs } from "expo-router";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function _layout() {
   return (
     <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
+      screenOptions={({ route }) => {
+        return {
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarIcon: ({ focused }) => {
+            let iconName;
+            if (route.name === "home") {
+              if (focused) {
+                iconName = (
+                  <Home colors={color.buttonBg} width={24} height={24} />
+                );
+              } else {
+                iconName = <HomeLight />;
+              }
+            } else if (route.name === "services/index") {
+              iconName = (
+                <Category colors={focused ? color.buttonBg : "#8F8F8F"} />
+              );
+            } else if (route.name === "history/index") {
+              if (focused) {
+                iconName = <CarPrimary color={color.buttonBg} />;
+              } else {
+                iconName = <Car colors={"#8F8F8F"} />;
+              }
+            } else if (route.name === "profile/index") {
+              if (focused) {
+                iconName = <Person fill={color.buttonBg} />;
+              } else {
+                iconName = <Person fill={"#8F8F8F"} />;
+              }
+            }
+            return iconName;
           },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+        };
+      }}
+    >
+      <Tabs.Screen name="home" />
+      <Tabs.Screen name="services/index" />
+      <Tabs.Screen name="history/index" />
+      <Tabs.Screen name="profile/index" />
     </Tabs>
   );
 }

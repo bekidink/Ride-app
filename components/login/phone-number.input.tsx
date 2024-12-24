@@ -2,11 +2,12 @@ import { View, Text, TextInput } from "react-native";
 import { commonStyles } from "@/styles/common.style";
 import { windowHeight, windowWidth } from "@/themes/app.constant";
 import { external } from "@/styles/external.style";
-import styles from "@/screens/login/styles";
+
 import color from "@/themes/app.colors";
 import SelectInput from "../common/select-input";
 import { useState } from "react";
 import { countryItems } from "@/configs/country-list";
+import { styles } from "@/app/(routes)/login";
 
 interface Props {
   width?: number;
