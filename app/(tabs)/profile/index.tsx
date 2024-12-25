@@ -15,7 +15,7 @@ export default function Profile() {
     return;
   }
 
-  console.log(user);
+  console.log(user,"user");
 
   return (
     <View style={{ paddingTop: 70 }}>

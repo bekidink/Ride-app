@@ -41,7 +41,7 @@ export default function HomeScreen() {
               fontSize: 25,
             }}
           >
-            Ride Wave
+         Take Ride 
           </Text>
           <LocationSearchBar />
         </View>
@@ -71,7 +71,7 @@ export default function HomeScreen() {
     </View>
   );
 }
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     paddingTop: windowHeight(23),
   },

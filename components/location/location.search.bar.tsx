@@ -17,7 +17,7 @@ export default function LocationSearchBar() {
         { paddingHorizontal: windowWidth(18) },
         { paddingRight: windowWidth(40) },
       ]}
-      onPress={() => router.push("/(routes)/rideplan")}
+      onPress={() => router.push("/(routes)/ride-plan")}
     >
       <View style={{ flexDirection: "row", paddingLeft: windowWidth(30) }}>
         <Search />

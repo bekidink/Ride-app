@@ -30,7 +30,7 @@ export default function EmailVerificationScreen() {
       })
       .then(async (res: any) => {
         setLoader(false);
-        console.log(res)
+        
         // await AsyncStorage.setItem("accessToken", res.data.accessToken);
         router.push("/(tabs)/home");
       })
